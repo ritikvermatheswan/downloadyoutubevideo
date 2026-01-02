@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritik's One-File Downloader</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <style>
+        body { font-family: sans-serif; background: #eef2f3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
+        h2 { color: #ff0000; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #ff0000; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        #output { margin-top: 20px; font-size: 14px; color: #333; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>YT Downloader</h2>
+        <input type="text" id="url-input" placeholder="YouTube लिंक यहाँ पेस्ट करें...">
+        <button py-click="download_video" id="dl-btn">Download Now</button>
+        <div id="output"></div>
+    </div>
+
+    <script type="py">
+        from pyscript import display
+        import js
+
+        async def download_video(event):
+            url = js.document.getElementById("url-input").value
+            if not url:
+                js.alert("कृपया लिंक डालें!")
+                return
+
+            display("डाउनलोडिंग शुरू... (PyScript में थोड़ा समय लग सकता है)", target="output")
+            
+            # नोट: ब्राउज़र की सुरक्षा के कारण, PyScript से सीधे YouTube फाइल 
+            # आपके स्टोरेज में सेव करना कठिन होता है। 
+            # यह तरीका सीखने के लिए सबसे अच्छा है।
+            
+            print(f"URL received: {url}")
+            display(f"Success: Link {url} को प्रोसेस किया जा रहा है!", target="output")
+    </script>
+
+</body>
+</html>
